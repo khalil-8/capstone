@@ -1,10 +1,13 @@
 node {
     def app
-
     stage('Clone repository') {
         /* Cloning the Repository to our Workspace */
-
         checkout scm
+    }
+
+    stage('Lint HTML'){
+
+        sh 'tidy -q -e static-html/*.html'
     }
 
     stage('Build image') {
