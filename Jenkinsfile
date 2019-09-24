@@ -45,7 +45,7 @@ pipeline {
             //sh '''kubectl set image deployment/udcty-capstone  udacitycapstone=brea/udcty-capstone:""$BUILD_ID"'''
             //sh '''kubectl rollout status -w deployment/udcty-capstone'''
             //sh '''kubectl get nodes'''
-          }
+          //}
         }
       }
 
