@@ -27,9 +27,9 @@ node {
     }
 
     stage('Deploy image to EKS cluster') {
-          steps {
-            withAWS(credentials: 'aws-static', region: 'eu-west-2') {
-              sh 'aws iam get-user'
-          }
-        }
+      withAWS(credentials: 'aws-static', region: 'eu-west-2'){
+        sh 'aws iam get-user'
+      }
+    }
+
 }
