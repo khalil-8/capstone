@@ -19,7 +19,7 @@ pipeline {
          steps {
              script {
                   dockerImage=docker.build registry + ":$BUILD_NUMBER"
-                  sh 'docker run -d -p 8000:80 brea/udcty-capstone:$BUILD_ID'
+                  //sh 'docker run -d -p 8000:80 brea/udcty-capstone:$BUILD_ID'
              }
          }
      }
