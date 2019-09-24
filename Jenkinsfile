@@ -19,10 +19,10 @@ pipeline {
          steps {
              script {
               //withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'dockerhub', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD']])
-              {
+              //{
                   dockerImage=docker.build registry + ":$BUILD_NUMBER"
                   sh 'docker run -d -p 80:80 brea/udcty-capstone:$BUILD_ID'
-              }
+              //}
              }
          }
      }
