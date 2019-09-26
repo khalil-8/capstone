@@ -38,14 +38,14 @@ pipeline {
 
     stage('Deploy image to EKS cluster') {
       steps {
-        withAWS(credentials:'aws-static', region:'us-west-2') {
-          sh 'aws iam get-user'
-        //  withKubeConfig(credentialsId: 'aws-static', serverUrl: 'https://86E92CDB703B677524FFCAEF59CAA16F.gr7.us-west-2.eks.amazonaws.com') {
-          //  sh '''kubectl get nodes'''
+        withAWS(region:'us-west-2',credentials:'aws-static') {
+          //sh 'aws iam get-user'
+          withKubeConfig(credentialsId: 'aws-static', serverUrl: 'https://86E92CDB703B677524FFCAEF59CAA16F.gr7.us-west-2.eks.amazonaws.com') {
+            sh '''kubectl get nodes'''
             //sh '''kubectl set image deployment/udcty-capstone  udacitycapstone=brea/udcty-capstone:""$BUILD_ID"'''
             //sh '''kubectl rollout status -w deployment/udcty-capstone'''
             //sh '''kubectl get nodes'''
-          //}
+          }
         }
       }
 
