@@ -42,6 +42,7 @@ pipeline {
           sh 'aws iam get-user'
           //withKubeConfig(credentialsId: 'eks-auth', serverUrl: 'https://6908C89A2FD44AD7FEDA4EC93B383D8A.gr7.us-west-2.eks.amazonaws.com') {
             sh '''
+              aws eks --region us-west-2 update-kubeconfig --name eks-cluster-west
               kubectl get nodes
             '''
             //sh '''kubectl set image deployment/udcty-capstone  udacitycapstone=brea/udcty-capstone:""$BUILD_ID"'''
