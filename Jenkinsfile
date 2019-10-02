@@ -44,8 +44,8 @@ pipeline {
             sh '''
               aws eks --region us-west-2 update-kubeconfig --name eks-cluster-west
               kubectl get nodes
-              kubectl -n kube-public  get pods
-              kubectl set image deployments/udcty-capstone udacitycapstone=brea/udcty-capstone::"$BUILD_ID"
+              kubectl -n kube-public get pods
+              kubectl run udacitycapstone --image=brea/udcty-capstone:"$BUILD_ID" --port=80 --expose=true
             '''
             //sh '''kubectl set image deployment/udcty-capstone  udacitycapstone=brea/udcty-capstone:""$BUILD_ID"'''
             //sh '''kubectl rollout status -w deployment/udcty-capstone'''
