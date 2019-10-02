@@ -40,12 +40,12 @@ pipeline {
       steps {
         withAWS(region:'us-west-2',credentials:'aws-static') {
           sh 'aws iam get-user'
-          withKubeConfig(credentialsId: 'aws-static', serverUrl: 'https://9A54461D2A8CBA442579FF430A3B4570.sk1.us-east-2.eks.amazonaws.com') {
+          //withKubeConfig(credentialsId: 'aws-static', serverUrl: 'https://9A54461D2A8CBA442579FF430A3B4570.sk1.us-east-2.eks.amazonaws.com') {
             sh '''kubectl get nodes'''
             sh '''kubectl set image deployment/udcty-capstone  udacitycapstone=brea/udcty-capstone:""$BUILD_ID"'''
             sh '''kubectl rollout status -w deployment/udcty-capstone'''
             sh '''kubectl get nodes'''
-          }
+          //}
         }
       }
 
