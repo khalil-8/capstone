@@ -39,9 +39,9 @@ pipeline {
     stage('Deploy image to EKS cluster') {
       steps {
         withAWS(region:'us-west-2',credentials:'aws-static') {
-          sh 'aws iam get-user'
+          //sh 'aws iam get-user'
           //withKubeConfig(credentialsId: 'eks-auth', serverUrl: 'https://6908C89A2FD44AD7FEDA4EC93B383D8A.gr7.us-west-2.eks.amazonaws.com') {
-            sh '''aws eks --region us-west-2 update-kubeconfig --name eks-cluster-west'''
+            sh '''aws eks --region us-west-2 update-kubeconfig --name terraform-eks-demo'''
             sh '''kubectl get nodes'''
             sh '''kubectl -n kube-public get pods'''
             //sh '''kubectl run udacitycapstone --image=brea/udcty-capstone:"$BUILD_ID" --port=80 --expose=true'''
