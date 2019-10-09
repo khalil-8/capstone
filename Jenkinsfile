@@ -39,7 +39,6 @@ pipeline {
         withAWS(region:'us-west-2',credentials:'aws-static') {
             sh '''aws eks --region us-west-2 update-kubeconfig --name terraform-eks-demo'''
             sh '''kubectl get nodes'''
-            //sh '''kubectl set image deployments/udacitycapstone udacitycapstone=brea/udcty-capstone:"$BUILD_ID"'''
             sh '''kubectl rolling-update udacitycapstone --image=udacitycapstone=brea/udcty-capstone:"$BUILD_ID"'''
             sh '''kubectl rollout status -w deployment/udacitycapstone'''
             sh '''kubectl scale deployment/udacitycapstone --replicas=3'''
